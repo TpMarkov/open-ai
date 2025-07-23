@@ -1,15 +1,13 @@
 "use client";
-import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { OctagonAlertIcon } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { FaGithub, FaGoogle } from "react-icons/fa";
+import { z } from "zod";
 
 import { Alert, AlertTitle } from "@/components/ui/alert";
-import { authClient } from "@/lib/auth-client";
-import { Card, CardContent } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 import {
   Form,
   FormControl,
@@ -18,9 +16,11 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
-import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -168,7 +168,15 @@ export const SignInView = () => {
                     disabled={isPending}
                     variant="outline"
                     type="button"
-                    onClick={() => onSocial("github")}
+                    onClick={() =>
+                      authClient.signIn.social({
+                        provider: "github",
+                        callbackURL: "/",
+                        providerOptions: {
+                          login: "",
+                        },
+                      })
+                    }
                     className="w-full hover:cursor-pointer"
                   >
                     {" "}
