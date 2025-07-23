@@ -3,6 +3,7 @@ import { set, z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { OctagonAlertIcon, OctagonIcon } from "lucide-react";
 import { useForm } from "react-hook-form";
+import { FaGithub, FaGoogle } from "react-icons/fa";
 
 import { Alert, AlertTitle } from "@/components/ui/alert";
 import { authClient } from "@/lib/auth-client";
@@ -18,8 +19,8 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -27,9 +28,9 @@ const formSchema = z.object({
 });
 
 export const SignInView = () => {
-  const router = useRouter();
   const [error, setError] = useState<string | null>(null);
   const [isPending, setIsPending] = useState(false);
+  const router = useRouter();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema), // ✅ correct usage
@@ -47,11 +48,33 @@ export const SignInView = () => {
       {
         email: data.email,
         password: data.password, // ✅ fixed typo
+        callbackURL: "/",
       },
       {
         onSuccess: () => {
           setIsPending(false);
           router.push("/");
+        },
+        onError: ({ error }) => {
+          setIsPending(false);
+          setError(error.message);
+        },
+      }
+    );
+  };
+
+  const onSocial = async (provider: "github" | "google") => {
+    setError(null);
+    setIsPending(true);
+
+    authClient.signIn.social(
+      {
+        provider: provider,
+        callbackURL: "/",
+      },
+      {
+        onSuccess: () => {
+          setIsPending(false);
         },
         onError: ({ error }) => {
           setIsPending(false);
@@ -118,7 +141,11 @@ export const SignInView = () => {
                     <AlertTitle>{error}</AlertTitle>
                   </Alert>
                 )}
-                <Button disabled={isPending} className="w-full" type="submit">
+                <Button
+                  disabled={isPending}
+                  className="w-full hover:cursor-pointer"
+                  type="submit"
+                >
                   Sign in
                 </Button>
                 <div className="after:border-border relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t">
@@ -131,16 +158,21 @@ export const SignInView = () => {
                     disabled={isPending}
                     variant="outline"
                     type="button"
-                    className="w-full"
+                    onClick={() => onSocial("google")}
+                    className="w-full hover:cursor-pointer"
                   >
+                    <FaGoogle></FaGoogle>
                     Google
                   </Button>
                   <Button
                     disabled={isPending}
                     variant="outline"
                     type="button"
-                    className="w-full"
+                    onClick={() => onSocial("github")}
+                    className="w-full hover:cursor-pointer"
                   >
+                    {" "}
+                    <FaGithub></FaGithub>
                     GitHub
                   </Button>
                 </div>

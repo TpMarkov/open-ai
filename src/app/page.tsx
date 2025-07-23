@@ -1,9 +1,19 @@
-"use client";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { useState } from "react";
-import { authClient } from "@/lib/auth-client";
+import { headers } from "next/headers";
 
-export default function Home() {
-  return <h1>Home page</h1>;
-}
+import { auth } from "@/lib/auth";
+import { HomeView } from "@/modules/home/views/home-view";
+import { redirect } from "next/navigation";
+
+const Page = async () => {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+
+  if (!session) {
+    redirect("/sign-in");
+  }
+
+  return <HomeView />;
+};
+
+export default Page;

@@ -1,7 +1,7 @@
 "use client";
-import { set, z } from "zod";
+import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { OctagonAlertIcon, OctagonIcon } from "lucide-react";
+import { OctagonAlertIcon } from "lucide-react";
 import { useForm } from "react-hook-form";
 
 import { Alert, AlertTitle } from "@/components/ui/alert";
@@ -18,8 +18,9 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { FaGithub, FaGoogle } from "react-icons/fa";
 
 const formSchema = z
   .object({
@@ -57,11 +58,33 @@ export const SignUpView = () => {
         name: data.name,
         email: data.email,
         password: data.password, // ✅ fixed typo
+        callbackURL: "/",
       },
       {
         onSuccess: () => {
           setIsPending(false);
           router.push("/");
+        },
+        onError: ({ error }) => {
+          setIsPending(false);
+          setError(error.message);
+        },
+      }
+    );
+  };
+
+  const onSocial = async (provider: "github" | "google") => {
+    setError(null);
+    setIsPending(true);
+
+    authClient.signIn.social(
+      {
+        provider: provider,
+        callbackURL: "/",
+      },
+      {
+        onSuccess: () => {
+          setIsPending(false);
         },
         onError: ({ error }) => {
           setIsPending(false);
@@ -166,7 +189,11 @@ export const SignUpView = () => {
                     <AlertTitle>{error}</AlertTitle>
                   </Alert>
                 )}
-                <Button disabled={isPending} className="w-full" type="submit">
+                <Button
+                  disabled={isPending}
+                  className="w-full hover:cursor-pointer"
+                  type="submit"
+                >
                   Create Account
                 </Button>
                 <div className="after:border-border relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t">
@@ -179,16 +206,20 @@ export const SignUpView = () => {
                     disabled={isPending}
                     variant="outline"
                     type="button"
-                    className="w-full"
+                    onClick={() => onSocial("google")}
+                    className="w-full hover:cursor-pointer"
                   >
+                    <FaGoogle></FaGoogle>
                     Google
                   </Button>
                   <Button
                     disabled={isPending}
                     variant="outline"
                     type="button"
-                    className="w-full"
+                    onClick={() => onSocial("github")}
+                    className="w-full hover:cursor-pointer"
                   >
+                    <FaGithub></FaGithub>
                     GitHub
                   </Button>
                 </div>
