@@ -1,7 +1,7 @@
 "use client";
-import { set, z } from "zod";
+import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { OctagonAlertIcon, OctagonIcon } from "lucide-react";
+import { OctagonAlertIcon } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 

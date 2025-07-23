@@ -79,12 +79,13 @@ export const SignUpView = () => {
 
     authClient.signIn.social(
       {
-        provider: provider,
+        provider,
         callbackURL: "/",
       },
       {
         onSuccess: () => {
           setIsPending(false);
+          router.push("/");
         },
         onError: ({ error }) => {
           setIsPending(false);
@@ -93,7 +94,6 @@ export const SignUpView = () => {
       }
     );
   };
-
   return (
     <div className="flex flex-col gap-6">
       <Card className="overflow-hidden p-0">

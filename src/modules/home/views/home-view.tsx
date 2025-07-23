@@ -12,15 +12,16 @@ export const HomeView = () => {
 
   if (!session) {
     return (
-      <div className="size-full m-auto text-center justify-center">
-        <Loader></Loader>
+      <div className="h-full justify-center">
+        <div className="flex h-[100vh] items-center justify-center size-full">
+          <Loader className="animate-spin" aria-label="Loading..." />
+        </div>
       </div>
     );
   }
-
   return (
     <div className="flex flex-col p-4 gap-y-4">
-      <p>Logged in as {session.user.name}</p>
+      <p>Logged in as {session.user?.name || "Unknown User"}</p>{" "}
       <Button
         onClick={() =>
           authClient.signOut({
