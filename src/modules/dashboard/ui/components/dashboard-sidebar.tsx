@@ -105,4 +105,4 @@ export const DashboardSidebar = () => {
   );
 };
 
-export default Sidebar;
+export default DashboardSidebar;
