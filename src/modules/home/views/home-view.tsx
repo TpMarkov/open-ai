@@ -14,7 +14,10 @@ export const HomeView = () => {
     return (
       <div className="h-full justify-center">
         <div className="flex h-[100vh] items-center justify-center size-full">
-          <Loader className="animate-spin" aria-label="Loading..." />
+          <Loader
+            className="animate-spin text-green-700 size-7"
+            aria-label="Loading..."
+          />
         </div>
       </div>
     );
