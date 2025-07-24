@@ -77,7 +77,7 @@ const DashboardUserButton = () => {
                   Billing
                 </Button>
                 <Button variant="outline" onClick={onLogout}>
-                  <LogOut className="size-4 text-black"></LogOut>
+                  <LogOutIcon className="size-4 text-black"></LogOutIcon>
                   Logout
                 </Button>
               </DrawerFooter>
