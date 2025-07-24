@@ -3,7 +3,6 @@ import {
   ChevronDownIcon,
   CreditCardIcon,
   Loader,
-  LogOut,
   LogOutIcon,
 } from "lucide-react";
 import React from "react";
