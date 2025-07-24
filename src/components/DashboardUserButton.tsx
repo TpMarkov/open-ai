@@ -3,6 +3,7 @@ import {
   ChevronDownIcon,
   CreditCardIcon,
   Loader,
+  LogOut,
   LogOutIcon,
 } from "lucide-react";
 import React from "react";
@@ -76,7 +77,7 @@ const DashboardUserButton = () => {
                   Billing
                 </Button>
                 <Button variant="outline" onClick={onLogout}>
-                  <CreditCardIcon className="size-4 text-black"></CreditCardIcon>
+                  <LogOut className="size-4 text-black"></LogOut>
                   Logout
                 </Button>
               </DrawerFooter>
