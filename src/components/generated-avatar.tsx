@@ -23,7 +23,7 @@ const GeneratedAvatar = ({ seed, className, variant }: GeneratedAvatar) => {
     });
   }
   return (
-    <Avatar className="mr-3">
+    <Avatar className={className}>
       <AvatarImage src={avatar.toDataUri()} alt="Avatar" />
       <AvatarFallback>{seed.charAt(0).toUpperCase()}</AvatarFallback>
     </Avatar>

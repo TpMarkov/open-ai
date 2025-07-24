@@ -17,19 +17,19 @@ import {
 import { Avatar } from "./ui/avatar";
 import { AvatarImage } from "@radix-ui/react-avatar";
 import GeneratedAvatar from "./generated-avatar";
-import { useRouter } from "next/navigation";
+import { redirect } from "next/navigation";
 
 const DashboardUserButton = () => {
   const { data, isPending } = authClient.useSession();
 
-  if (isPending || !data?.user) return <Loader />;
-  const router = useRouter();
+  if (isPending || !data?.user)
+    return <Loader className="flex justify-center items-center w-full mb-2" />;
 
   const onLogout = () => {
     authClient.signOut({
       fetchOptions: {
         onSuccess: () => {
-          router.push("/sign-in");
+          redirect("/sign-in");
         },
       },
     });
@@ -46,7 +46,7 @@ const DashboardUserButton = () => {
           <GeneratedAvatar
             seed={data.user.name}
             variant="initials"
-            className="size-9"
+            className="size-9 mr-3"
           />
         )}
         <div className="flex flex-col gap-0.5 text-left overflow-hidden flex-1 min-w-0">
