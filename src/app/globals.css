@@ -77,7 +77,8 @@
   /* Sidebar active item background color */
   --sidebar-accent: oklch(0.34 0.0601 171.21);
   /* Sidebar active item text-color */
-  --sidebar-accent-foreground: oklch(1 0 0) --sidebar-border: oklch(0.922 0 0);
+  --sidebar-accent-foreground: oklch(1 0 0);
+  --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
 }
 
