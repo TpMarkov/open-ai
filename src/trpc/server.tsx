@@ -12,3 +12,8 @@ export const trpc = createTRPCOptionsProxy({
   router: appRouter,
   queryClient: getQueryClient,
 });
+<<<<<<< HEAD
+=======
+
+export const caller = appRouter.createCaller(createTRPCContext);
+>>>>>>> f4b56b36c7938c0f34c687ec6a38bd128eafa51d
