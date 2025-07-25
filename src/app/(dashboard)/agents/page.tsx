@@ -1,3 +1,4 @@
+import { ResponsiveDialog } from "@/components/responsive-dialog";
 import AgentsView, {
   AgentsLoadingView,
   AgentsViewError,
