@@ -45,6 +45,15 @@ export const AgentForm = ({
         }
         onSuccess?.();
       },
+      // onSuccess: async () => {
+      //   await queryClient.prefetchQuery(trpc.agents.getMany.queryOptions());
+
+      //   // This will notify any `useSuspenseQuery` listeners to re-render with the new data
+      //   queryClient.refetchQueries(trpc.agents.getMany.queryKey());
+
+      //   onSuccess?.();
+      // },
+
       onError: (error) => {
         toast.error(error.message);
 
