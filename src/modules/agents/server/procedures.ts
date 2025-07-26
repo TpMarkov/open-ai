@@ -6,6 +6,8 @@ import {
 import { db } from "@/db";
 import { agents } from "@/db/schema";
 import { agentsInsertSchema } from "../schemas";
+import { eq } from "drizzle-orm";
+import { z } from "zod";
 
 export const agentsRouter = createTRPCRouter({
   // GET ONE to use protected procedure
