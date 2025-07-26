@@ -25,7 +25,8 @@ const AgentsView = () => {
     return <ErrorState title="Error" description="Failed to load agents." />;
 
   return (
-    <div className="flex-1 pb-4 px-4 md:px-8 flex flex-col  gp-y-4">
+    <div className="flex-1 pb-4 px-4 md:px-8 flex flex-col gap-y-4">
+      {" "}
       <DataTable data={data} columns={columns} />
       {data.length === 0 && (
         <EmptyState

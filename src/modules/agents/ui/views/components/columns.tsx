@@ -10,13 +10,6 @@ import {
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
-export type Payment = {
-  id: string;
-  amount: number;
-  status: "pending" | "processing" | "success" | "failed";
-  email: string;
-};
-
 export const columns: ColumnDef<AgentGetOne>[] = [
   {
     accessorKey: "name",
@@ -28,7 +21,8 @@ export const columns: ColumnDef<AgentGetOne>[] = [
             seed={row.original.name}
             variant="botttsNeutral"
             className="size-6"
-          ></GeneratedAvatar>
+            alt={`Avatar for ${row.original.name}`}
+          ></GeneratedAvatar>{" "}
           <span className="font-semibold capitalize">{row.original.name}</span>
         </div>
         <div className="flex items-center gap-x-2">
@@ -48,8 +42,9 @@ export const columns: ColumnDef<AgentGetOne>[] = [
         variant="outline"
         className="flex items-center gap-x-2 [&>svg]:size-4"
       >
-        <VideoIcon className="text-blue-700"></VideoIcon>5{" "}
-        {row.original.meetingCount === 1 ? "meeting" : "meetings"}
+        <VideoIcon className="text-blue-700"></VideoIcon>
+        {row.original.meetingCount}{" "}
+        {row.original.meetingCount === 1 ? "meeting" : "meetings"}{" "}
       </Badge>
     ),
   },
