@@ -1,6 +1,6 @@
 import {
   createTRPCRouter,
-  baseProcedure,
+  // baseProcedure,
   protectedProcedure,
 } from "@/trpc/init";
 import { db } from "@/db";
