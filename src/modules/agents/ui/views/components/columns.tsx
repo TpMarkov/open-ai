@@ -3,11 +3,7 @@
 import { AgentGetOne } from "@/modules/agents/types";
 import { ColumnDef } from "@tanstack/react-table";
 import GeneratedAvatar from "@/components/generated-avatar";
-import {
-  CornerDownRightIcon,
-  CornerRightDownIcon,
-  VideoIcon,
-} from "lucide-react";
+import { CornerDownRightIcon, VideoIcon } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
 export const columns: ColumnDef<AgentGetOne>[] = [
@@ -21,7 +17,7 @@ export const columns: ColumnDef<AgentGetOne>[] = [
             seed={row.original.name}
             variant="botttsNeutral"
             className="size-6"
-            alt={`Avatar for ${row.original.name}`}
+            // alt={`Avatar for ${row.original.name}`}
           ></GeneratedAvatar>{" "}
           <span className="font-semibold capitalize">{row.original.name}</span>
         </div>

@@ -1,7 +1,7 @@
-import { AgentGetOne } from "@/modules/agents/types";
 import { useTRPC } from "@/trpc/client";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { z } from "zod";
+import type { AgentGetOne } from "@/modules/agents/types";
 
 import React from "react";
 import { useForm } from "react-hook-form";
@@ -38,21 +38,15 @@ export const AgentForm = ({
   const createAgent = useMutation(
     trpc.agents.create.mutationOptions({
       onSuccess: async () => {
-        await queryClient.invalidateQueries(trpc.agents.getMany.queryOptions());
+        await queryClient.invalidateQueries(
+          trpc.agents.getMany.queryOptions({})
+        );
 
         if (initialValues?.id) {
-          trpc.agents.getOne({ id: initialValues.id });
+          trpc.agents.getOne.queryOptions({ id: initialValues.id });
         }
         onSuccess?.();
       },
-      // onSuccess: async () => {
-      //   await queryClient.prefetchQuery(trpc.agents.getMany.queryOptions());
-
-      //   // This will notify any `useSuspenseQuery` listeners to re-render with the new data
-      //   queryClient.refetchQueries(trpc.agents.getMany.queryKey());
-
-      //   onSuccess?.();
-      // },
 
       onError: (error) => {
         toast.error(error.message);
