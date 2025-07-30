@@ -2,7 +2,7 @@ import { ResponsiveDialog } from "@/components/responsive-dialog";
 import { AgentForm } from "./agent-dash-form";
 import { AgentGetOne } from "@/modules/agents/types";
 
-interface NewAgentDialogProp {
+interface UpdateAgentDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   initialValues: AgentGetOne;
@@ -11,7 +11,7 @@ export const UpdateAgentDialog = ({
   open,
   onOpenChange,
   initialValues,
-}: NewAgentDialogProp) => {
+}: UpdateAgentDialogProps) => {
   return (
     <ResponsiveDialog
       title="Edit Agent"
