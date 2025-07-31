@@ -105,7 +105,7 @@ export const meetingsRouter = createTRPCRouter({
         .limit(pageSize)
         .offset((page - 1) * pageSize);
 
-      const total = await db
+      const [total] = await db
         .select({ count: count() })
         .from(meetings)
         .where(
@@ -115,11 +115,11 @@ export const meetingsRouter = createTRPCRouter({
           )
         );
 
-      const totalPages = Math.ceil(total[0].count / pageSize);
+      const totalPages = Math.ceil(total.count / pageSize);
 
       return {
         items: data,
-        total: total[0].count,
+        total: total.count,
         totalPages,
       };
     }),

@@ -96,7 +96,7 @@ export const agentsRouter = createTRPCRouter({
       const data = await db
         .select({
           // TODO:  Change to actual count
-          meetingCount: sql<number>`5`,
+          meetingCount: sql<number>`2`,
           ...getTableColumns(agents),
         })
         .from(agents)
@@ -110,7 +110,7 @@ export const agentsRouter = createTRPCRouter({
         .limit(pageSize)
         .offset((page - 1) * pageSize);
 
-      const total = await db
+      const [total] = await db
         .select({ count: count() })
         .from(agents)
         .where(
@@ -120,11 +120,11 @@ export const agentsRouter = createTRPCRouter({
           )
         );
 
-      const totalPages = Math.ceil(total[0].count / pageSize);
+      const totalPages = Math.ceil(total.count / pageSize);
 
       return {
         items: data,
-        total: total[0].count,
+        total: total.count,
         totalPages,
       };
     }),
