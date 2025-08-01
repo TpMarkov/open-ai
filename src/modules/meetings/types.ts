@@ -10,5 +10,5 @@ export enum MeetingStatus {
   Active = "active",
   Completed = "completed",
   Processing = "processing",
-  Cancelled = "canceled",
+  Canceled = "canceled",
 }
