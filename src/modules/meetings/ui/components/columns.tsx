@@ -2,10 +2,9 @@
 
 import { ColumnDef } from "@tanstack/react-table";
 
-import { format, formatDuration } from "date-fns";
+import { format } from "date-fns";
 import humanizeDuration from "humanize-duration";
 
-import { VideoIcon } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import {
   CircleCheckIcon,
@@ -20,7 +19,7 @@ import { cn } from "@/lib/utils";
 import { MeetingGetMany } from "../../types";
 import GeneratedAvatar from "@/components/generated-avatar";
 
-function formatFuration(seconds: number) {
+function formatDuration(seconds: number) {
   return humanizeDuration(seconds * 1000, {
     largest: 1,
     round: true,
