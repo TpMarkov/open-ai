@@ -10,10 +10,19 @@ import { ErrorState } from "@/components/error-state";
 import { DataTable } from "@/components/data-table";
 import { columns } from "../components/columns";
 import { EmptyState } from "@/components/empty-state";
+import { useRouter } from "next/navigation";
+import { useMeetingsFilter } from "../../hooks/use-meetings-filters";
 
 export const MeetingsView = () => {
   const trpc = useTRPC();
-  const { data } = useSuspenseQuery(trpc.meetings.getMany.queryOptions({}));
+  const router = useRouter();
+  const [filters, setFilters] = useMeetingsFilter();
+
+  const { data } = useSuspenseQuery(
+    trpc.meetings.getMany.queryOptions({
+      ...filters,
+    })
+  );
 
   return (
     <div>
