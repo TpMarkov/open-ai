@@ -7,6 +7,8 @@ import { StatusFilter } from "./status-filter";
 import { AgentIdFilter } from "./agent-id-filter";
 import { useMeetingsFilter } from "../../hooks/use-meetings-filters";
 import { Button } from "@/components/ui/button";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import { DEFAULT_PAGE } from "@/constants";
 
 export const MeetingsListHeader = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -20,7 +22,7 @@ export const MeetingsListHeader = () => {
       status: "",
       agentId: "",
       search: "",
-      page: 1,
+      page: DEFAULT_PAGE,
     });
   };
 
@@ -35,17 +37,20 @@ export const MeetingsListHeader = () => {
             New Meeting
           </Button>
         </div>
-        <div className="flex items-center gap-x-2 p-1">
-          <MeetingSearchFilter />
-          <StatusFilter />
-          <AgentIdFilter />
-          {isAnyFiltersModified && (
-            <Button variant={"outline"} onClick={onClearFilters}>
-              <CircleXIcon className="size-4" />
-              Clear
-            </Button>
-          )}
-        </div>
+        <ScrollArea>
+          <div className="flex items-center gap-x-2 p-1">
+            <MeetingSearchFilter />
+            <StatusFilter />
+            <AgentIdFilter />
+            {isAnyFiltersModified && (
+              <Button variant={"outline"} onClick={onClearFilters}>
+                <CircleXIcon className="size-4" />
+                Clear
+              </Button>
+            )}
+          </div>
+          <ScrollBar orientation="horizontal" />
+        </ScrollArea>
       </div>
     </>
   );
