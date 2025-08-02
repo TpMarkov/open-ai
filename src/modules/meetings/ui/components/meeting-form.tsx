@@ -75,7 +75,9 @@ export const MeetingForm = ({
         );
 
         if (initialValues?.id) {
-          trpc.meetings.getOne.queryOptions({ id: initialValues.id });
+          await queryClient.invalidateQueries(
+            trpc.meetings.getOne.queryOptions({ id: initialValues.id })
+          );
         }
         onSuccess?.();
       },
