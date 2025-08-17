@@ -64,12 +64,22 @@ export const CallConnect = ({
     _call.microphone.disable();
     setCall(_call);
 
+    // return () => {
+    //   if (_call.state.callingState !== CallingState.LEFT) {
+    //     _call.leave();
+    //     _call.endCall();
+    //     setCall(undefined);
+    //   }
+    // };
+
     return () => {
-      if (_call.state.callingState !== CallingState.LEFT) {
-        _call.leave();
-        _call.endCall();
-        setCall(undefined);
+      if (_call?.state.callingState !== CallingState.LEFT) {
+        _call.endCall().catch((err) => {
+          console.warn("Failed to end the call:", err);
+        });
       }
+
+      setCall(undefined);
     };
   }, [client, meetingId]);
 
