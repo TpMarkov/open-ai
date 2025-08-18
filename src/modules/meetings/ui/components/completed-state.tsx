@@ -1,5 +1,4 @@
 import React from "react";
-import { MeetingGetOne } from "../../types";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
@@ -15,6 +14,9 @@ import GeneratedAvatar from "@/components/generated-avatar";
 import { format } from "date-fns";
 import { Badge } from "@/components/ui/badge";
 import { formatDuration } from "@/lib/utils";
+import Transcript from "@/components/transcript";
+import { MeetingGetOne } from "../../types";
+import { ChatProvider } from "./chat-provider";
 
 interface Props {
   data: MeetingGetOne;
@@ -58,6 +60,12 @@ export const CompletedState = ({ data }: Props) => {
             <ScrollBar orientation="horizontal" />
           </ScrollArea>
         </div>
+        <TabsContent value="chat">
+          <ChatProvider meetingId={data.id} meetingName={data.name} />
+        </TabsContent>
+        <TabsContent value="transcript">
+          <Transcript meetingId={data.id} />
+        </TabsContent>
         <TabsContent value="recording">
           <div className="bg-whtie px-4 py-5 rounded-lg boreder">
             <video src={data.recordingUrl!} className="w-full" controls />
@@ -75,7 +83,7 @@ export const CompletedState = ({ data }: Props) => {
                   <GeneratedAvatar
                     seed={data.agent.name}
                     variant="botttsNeutral"
-                    className="size-5"
+                    className="size-3"
                   ></GeneratedAvatar>
                   {data.agent.name}
                 </Link>{" "}
