@@ -18,7 +18,7 @@ export const MeetingsListHeader = () => {
 
   const onClearFilters = () => {
     setFilters({
-      status: "",
+      status: null,
       agentId: "",
       search: "",
       page: 1,
