@@ -25,9 +25,9 @@ export const ChatProvider = ({ meetingId, meetingName }: Props) => {
     <ChatUI
       meetingId={meetingId}
       meetingName={meetingName}
-      userId={data?.user.id}
-      userName={data?.user.name}
-      userImage={data.user.image ?? ""}
+      userId={data?.user.id ?? ""}
+      userName={data?.user.name ?? ""}
+      userImage={data?.user.image ?? ""}
     />
   );
 };

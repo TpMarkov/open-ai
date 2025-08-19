@@ -30,6 +30,7 @@ import { MeetingStatus, StreamTranscriptItem } from "../types";
 import { streamVideo } from "@/lib/stream-video";
 import { generateAvatarUri } from "@/lib/avatar";
 import { streamChat } from "@/lib/stream-chat";
+import JSONL from "jsonl-parse-stringify";
 
 export const meetingsRouter = createTRPCRouter({
   generateChatToken: protectedProcedure.mutation(async ({ ctx }) => {
@@ -63,7 +64,7 @@ export const meetingsRouter = createTRPCRouter({
 
       const transcript = await fetch(existingMeeting.transcriptUrl)
         .then((res) => res.text())
-        .then((text) => JSON.parse<StreamTranscriptItem>(text))
+        .then((text) => JSONL.parse<StreamTranscriptItem>(text))
         .catch(() => {
           return [];
         });
