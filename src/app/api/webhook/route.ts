@@ -256,13 +256,13 @@ export async function POST(req: NextRequest) {
         variant: "botttsNeutral",
       });
 
-      streamChat.upsertUser({
+      await streamChat.upsertUser({
         id: existingAgent.id,
         name: existingAgent.name,
         image: avatarUrl,
       });
 
-      channel.sendMessage({
+      await channel.sendMessage({
         text: GPTResponseText,
         user: {
           id: existingAgent.id,
