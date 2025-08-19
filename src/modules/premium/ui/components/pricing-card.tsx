@@ -114,7 +114,7 @@ export const PricingCard = ({
       </div>
       <Button
         onClick={onClick}
-        className="full"
+        className="w-full"
         size="lg"
         variant={variant === "highlighted" ? "default" : "outline"}
       >
