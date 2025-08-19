@@ -19,12 +19,13 @@ import { cn } from "@/lib/utils";
 import { Separator } from "@/components/ui/separator";
 import { usePathname } from "next/navigation";
 import DashboardUserButton from "@/components/DashboardUserButton";
+import { DashboardTrial } from "./dashboard-trial";
 
 const firstSection = [
   { icon: VideoIcon, label: "Meetings", href: "/meetings" },
   { icon: BotIcon, label: "Agents", href: "/agents" },
 ];
-const secondSection = [{ icon: StarIcon, label: "Upgrade", href: "/Upgrade" }];
+const secondSection = [{ icon: StarIcon, label: "Upgrade", href: "/upgrade" }];
 
 export const DashboardSidebar = () => {
   const pathName = usePathname();
@@ -98,7 +99,10 @@ export const DashboardSidebar = () => {
         </SidebarGroup>
       </SidebarContent>
       <SidebarFooter className="text-white">
-        <DashboardUserButton />
+        <div className="flex gap-2 flex-col">
+          <DashboardTrial />
+          <DashboardUserButton />
+        </div>
       </SidebarFooter>
     </Sidebar>
   );
