@@ -1,20 +1,14 @@
 import { EmptyState } from "@/components/empty-state";
-import { VideoIcon, BanIcon } from "lucide-react";
+import { VideoIcon } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 interface Props {
   meetingId: string;
-  onCancelMeeting: () => void;
-  isCancelling: boolean;
 }
 
-export const UpcomingState = ({
-  meetingId,
-  onCancelMeeting,
-  isCancelling,
-}: Props) => {
+export const UpcomingState = ({ meetingId }: Props) => {
   return (
     <div className="bg-white rounded-lg px-4 py-5 flex flex-col gap-y-8 items-center justify-center">
       <EmptyState
@@ -23,7 +17,7 @@ export const UpcomingState = ({
         description="Once you start this meeting, a summary will apear here"
       />
       <div className="flex flex-col-reverse lg:flex-row lg:justify-center items-center gap-2">
-        <Button
+        {/* <Button
           disabled={isCancelling}
           onClick={onCancelMeeting}
           variant={"secondary"}
@@ -31,9 +25,9 @@ export const UpcomingState = ({
         >
           <BanIcon />
           Cancel meeting
-        </Button>
+        </Button> */}
         <Link href={`/call/${meetingId}`}>
-          <Button disabled={isCancelling} className="w-full lg:w-auto">
+          <Button className="w-full lg:w-auto">
             <VideoIcon></VideoIcon>
             Start meeting
           </Button>

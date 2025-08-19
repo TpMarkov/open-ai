@@ -16,6 +16,7 @@ export const auth = betterAuth({
           authenticatedUsersOnly: true,
           successUrl: "/upgrade",
         }),
+        portal(),
       ],
     }),
   ],
