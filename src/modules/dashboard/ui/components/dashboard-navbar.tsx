@@ -1,16 +1,10 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { useSidebar } from "@/components/ui/sidebar";
-import {
-  PanelLeftClose,
-  PanelLeftIcon,
-  SearchCodeIcon,
-  SearchIcon,
-} from "lucide-react";
+import { PanelLeftClose, PanelLeftIcon, SearchIcon } from "lucide-react";
 
 import React, { useEffect, useState } from "react";
 import DashboardCommand from "./dashboard-command";
-import { useIsMobile } from "@/hooks/use-mobile";
 
 const DashboardNavbar = () => {
   const { state, toggleSidebar, isMobile } = useSidebar();
