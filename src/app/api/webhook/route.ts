@@ -1,8 +1,5 @@
 import OpenAI from "openai";
-import {
-  ChatCompletionMessage,
-  ChatCompletionMessageParam,
-} from "openai/resources/index.mjs";
+import { ChatCompletionMessageParam } from "openai/resources/index.mjs";
 
 import {
   MessageNewEvent,
@@ -21,9 +18,6 @@ import { streamVideo } from "@/lib/stream-video";
 import { NextRequest, NextResponse } from "next/server";
 import { inngest } from "@/inngest/client";
 import { generateAvatarUri } from "@/lib/avatar";
-import { EventEmitter } from "stream";
-import { channel } from "diagnostics_channel";
-import { DevBundlerService } from "next/dist/server/lib/dev-bundler-service";
 import { streamChat } from "@/lib/stream-chat";
 
 const openAiClient = new OpenAI({ apiKey: process.env.OPENAI_API_KEY! });

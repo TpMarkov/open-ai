@@ -8,6 +8,7 @@ import { z } from "zod";
 import { Alert, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import Image from "next/image";
 import {
   Form,
   FormControl,
@@ -190,7 +191,13 @@ export const SignInView = () => {
           </Form>
 
           <div className="bg-gradient-to-br from-sidebar-accent to-sidebar relative hidden md:flex flex-col gap-y-4 items-center justify-center">
-            <img src="/logo.svg" alt="Image" className="h-[92px] w-[92px]" />
+            <Image
+              src="/logo.svg"
+              alt="Logo"
+              width={92}
+              height={92}
+              className="h-[92px] w-[92px]"
+            />
             <p className="text-2xl font-semibold text-white">Meet.AI</p>
           </div>
         </CardContent>
