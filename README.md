@@ -28,13 +28,13 @@ Whether you’re an individual or a business, OpenAI adapts to your needs with f
 ## 📸 Screenshots / Demo
 
 <div style="display: flex; overflow-x: auto; gap: 10px;">
-  <img src="/public/1.png" alt="Dashboard" width="300"/>
-  <img src="/public/2.png" alt="Dashboard" width="300"/>
-  <img src="/public/3.png" alt="Dashboard" width="300"/>
-  <img src="/public/4.png" alt="Dashboard" width="300"/>
-  <img src="/public/5.png" alt="Dashboard" width="300"/>
-  <img src="/public/6.png" alt="Dashboard" width="300"/>
-  <img src="/public/7.png" alt="Dashboard" width="300"/>
+  <img src="/public/1.png" alt="Dashboard" width="500"/>
+  <img src="/public/2.png" alt="Dashboard" width="500"/>
+  <img src="/public/3.png" alt="Dashboard" width="500"/>
+  <img src="/public/4.png" alt="Dashboard" width="500"/>
+  <img src="/public/5.png" alt="Dashboard" width="500"/>
+  <img src="/public/6.png" alt="Dashboard" width="500"/>
+  <img src="/public/7.png" alt="Dashboard" width="500"/>
 </div>
 
 👉 Deployed project: [OpenAI Live Demo](https://open-ai-podf.vercel.app/)
