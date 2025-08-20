@@ -35,3 +35,39 @@ Add your screenshots or GIFs here:
 ![Dashboard Screenshot](./assets/dashboard.png)
 ![Video Call Demo](./assets/video-demo.gif)
 ```
+
+⚙️ Installation & Setup
+
+Clone the repository and install dependencies:
+
+git clone https://github.com/TpMarkov/prepare-for-interview-role.git
+cd prepare-for-interview-role
+npm install --legacy-peer-deps
+
+# Start local server
+
+npm run dev
+
+# In a new terminal, expose via ngrok
+
+ngrok http --url=eternal-serval-strongly.ngrok-free.app 3000
+
+# Run inngest
+
+npx inngest-cli@latest dev
+
+🛠️ Tech Stack
+
+Framework: Next.js 15, React 19
+
+UI & Styling: Tailwind CSS v4, Radix UI, Lucide Icons
+
+Auth & Payments: Better Auth, Polar SDK
+
+Database: Drizzle ORM + Neon Serverless
+
+Real-time & Video: Stream Chat, Stream Video SDK, OpenAI Realtime API
+
+State & Forms: TanStack Query, TRPC, React Hook Form, Zod
+
+Dev Tools: Inngest, ngrok, ESLint, TypeScript
