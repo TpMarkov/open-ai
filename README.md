@@ -27,7 +27,7 @@ Whether you’re an individual or a business, OpenAI adapts to your needs with f
 
 ## 📸 Screenshots / Demo
 
-<div style="display: flex; overflow-x: auto; gap: 10px;">
+<div style="display: flex; overflow-x: auto; gap: 10px; items: center">
   <img src="/public/1.png" alt="Dashboard" width="500"/>
   <img src="/public/2.png" alt="Dashboard" width="500"/>
   <img src="/public/3.png" alt="Dashboard" width="500"/>
