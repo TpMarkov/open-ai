@@ -27,6 +27,8 @@ Whether you’re an individual or a business, OpenAI adapts to your needs with f
 
 ## 📸 Screenshots / Demo
 
+<img src="/public/1.png" alt="Dashboard" width="600"/>
+
 👉 Deployed project: [OpenAI Live Demo](https://open-ai-podf.vercel.app/)
 
 Add your screenshots or GIFs here:
