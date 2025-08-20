@@ -40,13 +40,6 @@ Whether you’re an individual or a business, OpenAI adapts to your needs with f
 
 👉 Deployed project: [OpenAI Live Demo](https://open-ai-podf.vercel.app/)
 
-Add your screenshots or GIFs here:
-
-```markdown
-![Dashboard Screenshot](./assets/dashboard.png)
-![Video Call Demo](./assets/video-demo.gif)
-```
-
 ⚙️ Installation & Setup
 
 Clone the repository and install dependencies:
